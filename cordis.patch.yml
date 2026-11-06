@@ -1,0 +1,6 @@
+# One bundle, one row: the Tarot page.
+# The page's host half serves its own routes; nothing model-facing is registered
+# (no tool, no skill, no slash command, no system-prompt section).
+- insert:
+    - id: dsh-tarot-page
+      name: 'dsh-tarot-page'

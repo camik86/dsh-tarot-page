@@ -1,0 +1,61 @@
+{
+  "name": "dsh-tarot-page",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Tarot page for DeepSeek Harness: 78 public-domain Rider-Waite-Smith cards, four spreads, shuffle/deal animation, reading history, and an in-page AI reading streamed from the user's configured model.",
+  "license": "MIT",
+  "keywords": [
+    "dsh-plugin",
+    "dsh-bundle",
+    "dsh",
+    "deepseek",
+    "deepseek-harness",
+    "tarot",
+    "tarot-reading",
+    "rider-waite"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/camik86/dsh-tarot-page.git"
+  },
+  "homepage": "https://github.com/camik86/dsh-tarot-page",
+  "engines": {
+    "node": ">=22",
+    "dsh": ">=0.2.2-rc.1"
+  },
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "assets/cards/*.webp"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "fetch-cards": "python scripts/fetch-cards.py",
+    "pack": "npm pack"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  }
+}
